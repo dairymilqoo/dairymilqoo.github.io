@@ -1,0 +1,133 @@
+---
+title: "Pengaruh Tenaga Kerja dan Pertumbuhan Ekonomi Provinsi di Indonesia"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Zhalsabilla Putri Dianty"
+date: 2023-01-09
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![logo APP](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Indonesia, sebagai negara kepulauan terbesar di dunia, memiliki keberagaman sumber daya alam, budaya, dan manusia yang menjadi modal potensial untuk pengembangan ekonomi. Pertumbuhan ekonomi suatu daerah tidak dapat dilepaskan dari peran strategis tenaga kerja, yang merupakan pendorong utama bagi perkembangan sektor-sektor ekonomi. Provinsi sebagai unit administratif terdepan memiliki peran yang signifikan dalam menentukan arah dan keberhasilan pertumbuhan ekonomi nasional.
+
+Pertumbuhan ekonomi suatu provinsi tidak hanya mencerminkan kesejahteraan masyarakat setempat, tetapi juga dapat berdampak secara langsung pada pertumbuhan ekonomi nasional. Tenaga kerja menjadi unsur kunci dalam menggerakkan berbagai sektor ekonomi, mulai dari pertanian, industri, hingga sektor jasa. Oleh karena itu, pemahaman mendalam mengenai hubungan antara tenaga kerja dan pertumbuhan ekonomi provinsi merupakan langkah awal yang penting dalam merumuskan kebijakan pembangunan ekonomi yang berkelanjutan.
+
+Pada tingkat provinsi, aspek demografi dan kualitas tenaga kerja sangat mempengaruhi daya saing ekonomi. Ketersediaan tenaga kerja yang terampil dan berpendidikan tinggi dapat meningkatkan produktivitas dan daya saing industri di wilayah tersebut. Di sisi lain, ketidaksesuaian antara ketersediaan tenaga kerja dan kebutuhan pasar dapat menjadi hambatan bagi pertumbuhan ekonomi provinsi.
+
+Selain itu, transformasi ekonomi global juga menjadi faktor yang perlu diperhitungkan dalam merancang kebijakan pengembangan ekonomi provinsi. Globalisasi, perkembangan teknologi, dan perubahan pola konsumsi dunia turut memengaruhi kebutuhan tenaga kerja dan struktur ekonomi provinsi. Oleh karena itu, penyesuaian dan peningkatan keterampilan tenaga kerja menjadi kunci dalam menghadapi tantangan ini.
+
+Melalui pemahaman mendalam tentang pengaruh tenaga kerja terhadap pertumbuhan ekonomi provinsi, diharapkan dapat dirumuskan kebijakan-kebijakan yang tepat guna mendukung pembangunan ekonomi berkelanjutan. Dengan demikian, provinsi di Indonesia dapat memainkan peran yang lebih aktif dalam mencapai pertumbuhan ekonomi nasional yang inklusif dan berkeadilan.
+
+### Ruang lingkup
+
+Batasan masalah memiliki peran penting dalam menentukan lingkup pembahasan terkait variabel yang akan dianalisis, yakni Tenaga Kerja dan Pertumbuhan Ekonomi. Fungsinya adalah membantu mengidentifikasi permasalahan yang akan dibahas dan membatasi cakupan proses yang menjadi fokus analisis.
+
+### Rumusan masalah
+1.Apakah adanya Pengaruh Tenaga Kerja dan Pertumbuhan Ekonomi Provinsi di Indonesia?
+
+2.Apakah tenaga kerja berpengaruh besar terhadap pertumbuhan ekonomi?
+
+### Tujuan dan manfaat penelitian
+
+Penelitian ini bertujuan untuk memahami dampak Tenaga Kerja dan Pertumbuhan Ekonomi Provinsi di Indonesia. Manfaat dari penelitian ini adalah agar masyarakat dapat menyadari bahwa keterkaitan antara Tenaga Kerja dan Pertumbuhan Ekonomi Provinsi di Indonesia memiliki pengaruh yang signifikan.
+
+### Package
+
+```{r}
+#| warning: false
+#| echo: true
+library(tidyverse)
+library(readxl)
+```
+
+## Studi pustaka
+Tenaga kerja adalah istilah yang digunakan untuk merujuk pada jumlah pekerja atau sumber daya manusia yang tersedia untuk melakukan suatu pekerjaan atau tugas tertentu. Konsep ini mencakup seluruh individu yang terlibat dalam kegiatan produktif, baik di sektor formal maupun informal, dan melibatkan berbagai jenis pekerjaan, mulai dari buruh hingga  profesional. Pertumbuhan ekonomi adalah peningkatan nilai dari seluruh barang dan jasa yang dihasilkan oleh suatu negara atau wilayah dalam suatu periode waktu tertentu. Pertumbuhan ini sering diukur dengan menggunakan indikator ekonomi utama, seperti Produk Domestik Bruto (PDB). PDB menggambarkan nilai pasar dari semua barang dan jasa yang dihasilkan oleh suatu negara dalam satu tahun.
+
+## Metode penelitian
+
+### Data
+Berikut adalah data tenaga kerja dan pertumbuhan ekonomi di tahun 2022
+
+|PROVINSI     | TENAGA KERJA | PERTUMBUHAN EKONOMI |
+|-------------|--------------|-------------------- |
+|JAWA TENGAH  |   1562333    |    26.483.843,00    |
+|JAWA TIMUR   |   2280890    |    44.758.300,00    |
+|JAWA BARAT   |   1370950    |    40.021.673,00    |
+|DKI JAKARTA  |   126363     |    48.732.396,00    |
+|DI YOGYAKARTA|   223418     |    2.814.591,00     |
+
+
+Penelitian ini menggunakan data sekunder dari Badan Pusat Statistik(BPS)
+
+Membaca Data
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('DATA PENELITIAN.xlsx')
+head(dat)
+```
+# A tibble: 5 × 3
+  PROVINSI            X        Y
+  <chr>           <dbl>    <dbl>
+1 JAWA TENGAH   1562333 26483843
+2 JAWA TIMUR    2280890 44758300
+3 JAWA BARAT    1370950 40021673
+4 DKI JAKARTA    126363 48732396
+5 DI YOGYAKARTA  223418  2814591
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('DATA PENELITIAN.xlsx')
+head(dat)
+ggplot(data=dat,aes(x=X,y=Y)) +
+  geom_point()
+```
+### Metode analisis
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini bermaksud mencari hubungan antara tenaga kerja dan pertumbuhan ekonomi. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah pertumbuhan ekonomi dan $x_t$ adalah tenaga kerja.
+
+## Pembahasan
+
+### Pembahasan masalah
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('DATA PENELITIAN.xlsx')
+head(dat)
+```
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+reg<-lm(X~Y,data=dat)
+summary(reg)
+```
+
+
+## Kesimpulan
+Koefisien  variabel Y (publik) mempunyai nilai sebesar 1,726e-02 dengan nilai p sebesar 0,565.Nilai P yang tinggi menunjukkan bahwa variabel Tenaga Kerja tidak  signifikan memprediksi variabel pertumbuhan ekonomi (X).Oleh karena itu, hasil tersebut tidak terlalu mendukung adanya pengaruh  signifikan tenaga kerja terhadap pertumbuhan ekonomi provinsi di Indonesia.Koefisien  variabel Y (Buruh) adalah 1.
+
+726e-02 yang menunjukkan bahwa perubahan satu satuan Tenaga Kerja menyebabkan perubahan pertumbuhan ekonomi sebesar 1.
+726e-02 satuan.Namun nilai t-statistik yang rendah (0,645) dan p-value yang tinggi (0,565) menunjukkan bahwa pengaruh tersebut tidak signifikan secara statistik.Oleh karena itu, berdasarkan hasil tersebut belum dapat disimpulkan bahwa tenaga kerja mempunyai pengaruh yang besar terhadap pertumbuhan ekonomi.Ringkasnya, berdasarkan analisis regresi linier ini, tidak terdapat bukti kuat yang mendukung  pengaruh signifikan tenaga kerja terhadap pertumbuhan ekonomi provinsi di Indonesia.
+ 
+## Referensi
+Lubis, C. A. B. E. (2014). Pengaruh jumlah tenaga kerja, tingkat pendidikan pekerja dan pengeluaran pendidikan terhadap pertumbuhan ekonomi. Jurnal Economia, 10(2), 187-193.
+
+Maharani, K., & Isnowati, S. (2014). Kajian investasi, pengeluaran pemerintah, tenaga kerja dan keterbukaan ekonomi terhadap pertumbuhan ekonomi di Propinsi Jawa Tengah. Jurnal Bisnis Dan Ekonomi, 21(1).
+
+Rofii, A. M., & Ardyan, P. S. (2017). Analisis pengaruh inflasi, penanaman modal asing (pma) dan tenaga kerja terhadap pertumbuhan ekonomi di jawa timur. Jurnal Ekonomi & Bisnis, 2(1), 303-316.
+
+Sulistiawati, R. (2012). Pengaruh investasi terhadap pertumbuhan Ekonomi dan penyerapan tenaga kerja serta kesejahteraan masyarakat di Provinsi di Indonesia. Jurnal ekonomi bisnis dan kewirausahaan, 3(1), 29-50.
